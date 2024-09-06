@@ -150,10 +150,10 @@ EOT
 
 echo "NOMAD_LICENSE=${nomad_license}" >> /etc/nomad.d/nomad.env
 
-echo $nomad_bootstrap_token > /root/bootstrap.token
-echo "NOMAD_TOKEN=${nomad_bootstrap_token}" > /etc/environment
+echo "${nomad_bootstrap_token}" > /root/bootstrap.token
+echo "NOMAD_TOKEN=${nomad_bootstrap_token}" >> /etc/environment
 systemctl enable nomad --now
 
-sleep 15 # could replace this with a wait script
+sleep 15 # could replace this with an expect script.
 nomad acl bootstrap /root/bootstrap.token
 
