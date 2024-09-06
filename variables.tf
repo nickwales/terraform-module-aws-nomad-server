@@ -72,7 +72,7 @@ variable "nomad_encryption_key" {
 
 variable "nomad_bootstrap_token" {
   description = "Do not use defaults in production"
-  default = "217BD48E-7720-4DBF-ACC7-63B8FF0B05ED"
+  default = "30d8650c-d7fa-45d7-ab6e-7a8bf7c74a6b"
 }
 
 variable "ca_file" {}
