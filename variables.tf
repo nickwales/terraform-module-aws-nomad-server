@@ -18,7 +18,10 @@ variable "nomad_token" {
   default = "root"
 }
 
-variable "nomad_license" {}
+variable "nomad_license" {
+  description = "Required for Enterprise Versions"
+  default = ""
+}
 variable "nomad_version" {
   default = "1.8.3"
 }
@@ -67,7 +70,10 @@ variable "nomad_encryption_key" {
   default = "P4+PEZg4jDcWkSgHZ/i3xMuHaMmU8rx2owA4ffl2K8w="
 }
 
-variable "nomad_bootstrap_token" {}
+variable "nomad_bootstrap_token" {
+  description = "Do not use defaults in production"
+  default = "217BD48E-7720-4DBF-ACC7-63B8FF0B05ED"
+}
 
 variable "ca_file" {}
 variable "cert_file" {}

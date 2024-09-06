@@ -148,6 +148,8 @@ consul {
 }
 EOT
 
+echo "NOMAD_LICENSE=${nomad_license}" >> /etc/nomad.d/nomad.env
+
 echo ${nomad_bootstrap_token} > /root/bootstrap.token
 echo "NOMAD_TOKEN=${nomad_bootstrap_token}" > /etc/environment
 systemctl enable nomad --now
