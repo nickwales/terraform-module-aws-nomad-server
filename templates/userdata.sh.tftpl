@@ -95,6 +95,9 @@ cat <<EOT > /etc/nomad.d/nomad.hcl
 # Setup data dir
 data_dir = "/opt/nomad"
 
+region = "${nomad_region}"
+datacenter = "${nomad_datacenter}"
+
 # Enable the server
 server {
   enabled = true
@@ -155,5 +158,6 @@ echo "NOMAD_TOKEN=${nomad_bootstrap_token}" >> /etc/environment
 systemctl enable nomad --now
 
 sleep 15 # could replace this with an expect script.
-nomad acl bootstrap /root/bootstrap.token
+bootstrap_output=$(nomad acl bootstrap -json /root/bootstrap.token)
+echo $${bootstrap_output} > /root/bootstrap_output.json
 

@@ -18,6 +18,13 @@ variable "nomad_token" {
   default = "root"
 }
 
+variable "nomad_region" {
+  default = "dc1"
+}
+
+variable "nomad_datacenter" {
+  default = "dc1"
+}
 variable "nomad_license" {
   description = "Required for Enterprise Versions"
   default = ""
@@ -76,8 +83,12 @@ variable "nomad_bootstrap_token" {
 }
 
 variable "ca_file" {}
-variable "cert_file" {}
-variable "key_file" {}
+variable "cert_file" {
+  default = ""
+}
+variable "key_file" {
+  default = ""
+}
 
 variable "target_groups" {
   description = "List of target groups"
