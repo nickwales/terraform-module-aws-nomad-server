@@ -54,7 +54,6 @@ resource "aws_launch_template" "nomad_server" {
     consul_ca_file        = var.consul_ca_file,
     consul_binary         = var.consul_binary,
     consul_version        = var.consul_version, 
-    consul_ca_file        = var.consul_ca_file,
     consul_license        = var.consul_license,
     consul_token          = var.consul_token,
     consul_partition      = var.consul_partition,
