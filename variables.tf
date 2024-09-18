@@ -43,7 +43,7 @@ variable "consul_binary" {
 }
 
 variable "consul_version" {
-  default = "1.18.2"
+  default = "1.19.2"
 }
 variable "consul_license" {
   default = ""
