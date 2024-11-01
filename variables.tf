@@ -37,6 +37,11 @@ variable "nomad_binary" {
   default     = "nomad"
 }
 
+
+variable "consul_enabled" {
+  description = "value"
+  default     = true
+}
 variable "consul_binary" {
   description = "Should be 'consul' or 'consul-enterprise'"
   default     = "consul"

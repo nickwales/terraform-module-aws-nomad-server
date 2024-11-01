@@ -13,6 +13,9 @@ apt update && apt install -y \
   ${consul_binary}="${consul_version}*" \
   jq net-tools unzip
 
+
+if ${consul_enabled}; then 
+
 # Lay down consul certificates
 mkdir -p /etc/consul.d/certs
 echo "${consul_ca_file}" > /etc/consul.d/certs/consul-agent-ca.pem
@@ -77,6 +80,8 @@ EOT
 systemctl daemon-reload
 systemctl enable consul --now
 
+
+
 ## Configure Consul DNS 
 mkdir -p /etc/systemd/resolved.conf.d/
 cat <<EOT > /etc/systemd/resolved.conf.d/consul.conf
@@ -87,8 +92,9 @@ Domains=~consul
 EOT
 
 systemctl restart systemd-resolved
+fi
 
-
+### Nomad
 # Nomad Enterprise Features
 non_voter=""
 if [ $nomad_binary == "nomad-enterprise" ]; then
