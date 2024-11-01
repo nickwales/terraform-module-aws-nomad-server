@@ -99,7 +99,7 @@ fi
 non_voter=""
 if [ $nomad_binary == "nomad-enterprise" ]; then
   echo "NOMAD_LICENSE=${nomad_license}" >> /etc/nomad.d/nomad.env
-  non_voter="non_voting_server=${nomad_non_voting_server}"
+  NON_VOTER="non_voting_server = ${nomad_non_voting_server}"
 fi
 
 
@@ -116,7 +116,7 @@ datacenter = "${nomad_datacenter}"
 server {
   enabled = true
   bootstrap_expect = ${nomad_server_count}
-  $${non_voter}
+  "$${NON_VOTER}"
 }
 
 # tls {
