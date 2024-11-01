@@ -14,7 +14,7 @@ variable "private_subnets" {
 }
 
 variable "nomad_token" {
-  
+
   default = "root"
 }
 
@@ -27,7 +27,7 @@ variable "nomad_datacenter" {
 }
 variable "nomad_license" {
   description = "Required for Enterprise Versions"
-  default = ""
+  default     = ""
 }
 variable "nomad_version" {
   default = "1.8.3"
@@ -39,7 +39,7 @@ variable "nomad_binary" {
 
 variable "consul_binary" {
   description = "Should be 'consul' or 'consul-enterprise'"
-  default = "consul"
+  default     = "consul"
 }
 
 variable "consul_version" {
@@ -69,17 +69,17 @@ variable "datacenter" {
 
 variable "nomad_server_count" {
   description = "The number of nomad servers, should be 1,3 or 5"
-  default = 1
+  default     = 1
 }
 
 variable "nomad_encryption_key" {
   description = "Nomad Encryption Key, default only for dev environments"
-  default = "P4+PEZg4jDcWkSgHZ/i3xMuHaMmU8rx2owA4ffl2K8w="
+  default     = "P4+PEZg4jDcWkSgHZ/i3xMuHaMmU8rx2owA4ffl2K8w="
 }
 
 variable "nomad_bootstrap_token" {
   description = "Do not use defaults in production"
-  default = "30d8650c-d7fa-45d7-ab6e-7a8bf7c74a6b"
+  default     = "30d8650c-d7fa-45d7-ab6e-7a8bf7c74a6b"
 }
 
 variable "ca_file" {}
@@ -92,6 +92,12 @@ variable "key_file" {
 
 variable "target_groups" {
   description = "List of target groups"
-  type    = list(string)
-  default = [""]
+  type        = list(string)
+  default     = [""]
+}
+
+variable "nomad_non_voting_server" {
+  description = "Determine if a Nomad server should join the voting pool https://developer.hashicorp.com/nomad/docs/configuration/server#non_voting_server"
+  type        = bool
+  default     = false
 }

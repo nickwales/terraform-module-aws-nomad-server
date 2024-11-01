@@ -89,8 +89,16 @@ EOT
 systemctl restart systemd-resolved
 
 
-# Configure Nomad and start it up
+# Nomad Enterprise Features
+non_voter=""
+if [ $nomad_binary == "nomad-enterprise" ]; then
+  echo "NOMAD_LICENSE=${nomad_license}" >> /etc/nomad.d/nomad.env
+  non_voter="non_voting_server=${nomad_non_voting_server}"
+fi
 
+
+
+# Configure Nomad and start it up
 cat <<EOT > /etc/nomad.d/nomad.hcl
 # Setup data dir
 data_dir = "/opt/nomad"
@@ -102,6 +110,7 @@ datacenter = "${nomad_datacenter}"
 server {
   enabled = true
   bootstrap_expect = ${nomad_server_count}
+  $${non_voter}
 }
 
 # tls {
@@ -151,7 +160,6 @@ consul {
 }
 EOT
 
-echo "NOMAD_LICENSE=${nomad_license}" >> /etc/nomad.d/nomad.env
 
 echo "${nomad_bootstrap_token}" > /root/bootstrap.token
 echo "NOMAD_TOKEN=${nomad_bootstrap_token}" >> /etc/environment
