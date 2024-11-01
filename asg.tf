@@ -1,5 +1,5 @@
 resource "aws_autoscaling_group" "nomad_server" {
-  name                      = "nomad-server-${var.name}-${var.datacenter}"
+  name                      = "nomad-server-${var.name}-${var.datacenter}-${local.voter}"
   max_size                  = 3
   min_size                  = 1
   health_check_grace_period = 300
@@ -25,13 +25,13 @@ resource "aws_launch_template" "nomad_server" {
   iam_instance_profile {
     name = aws_iam_instance_profile.nomad_server.name
   }
-  name = "nomad-server-${var.datacenter}"
+  name = "nomad-server-${var.name}-${var.datacenter}-${local.voter}"
   tag_specifications {
     resource_type = "instance"
 
     tags = {
-      Name = "nomad-server-${var.datacenter}",
-      role = "nomad-server-${var.datacenter}",
+      Name = "nomad-server-${var.name}-${var.datacenter}-${local.voter}",
+      role = "nomad-server-${var.name}-${var.datacenter}-${local.voter}",
     }
   }
   update_default_version = true

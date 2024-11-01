@@ -164,6 +164,8 @@ consul {
     ttl = "1h"
   }
 }
+
+retry_join = ["provider=aws tag_key=role tag_value=nomad-server-${name}-${datacenter}-voter"]
 EOT
 
 

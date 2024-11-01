@@ -14,7 +14,6 @@ variable "private_subnets" {
 }
 
 variable "nomad_token" {
-
   default = "root"
 }
 
