@@ -104,7 +104,7 @@ else
   NON_VOTER=""
 fi
 
-echo $$NON_VOTER
+echo ${nomad_voter_config}
 
 # Configure Nomad and start it up
 cat <<EOT > /etc/nomad.d/nomad.hcl
