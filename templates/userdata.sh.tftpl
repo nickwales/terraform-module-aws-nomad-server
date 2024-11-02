@@ -96,13 +96,15 @@ fi
 
 ### Nomad
 # Nomad Enterprise Features
-non_voter=""
+
 if [ $nomad_binary == "nomad-enterprise" ]; then
   echo "NOMAD_LICENSE=${nomad_license}" >> /etc/nomad.d/nomad.env
   NON_VOTER="non_voting_server = ${nomad_non_voting_server}"
+else
+  NON_VOTER=""
 fi
 
-
+echo $$NON_VOTER
 
 # Configure Nomad and start it up
 cat <<EOT > /etc/nomad.d/nomad.hcl
@@ -116,7 +118,7 @@ datacenter = "${nomad_datacenter}"
 server {
   enabled = true
   bootstrap_expect = ${nomad_server_count}
-  "$${NON_VOTER}"
+  ${nomad_voter_config}
 }
 
 # tls {
