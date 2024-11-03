@@ -111,6 +111,10 @@ server {
   enabled = true
   ${nomad_bootstrap_expect}
   ${nomad_voter_config}
+
+  server_join {
+    retry_join = ["provider=aws tag_key=role tag_value=nomad-server-${name}-${datacenter}-voter"]
+  }
 }
 
 # tls {
@@ -158,8 +162,6 @@ consul {
     ttl = "1h"
   }
 }
-
-retry_join = ["provider=aws tag_key=role tag_value=nomad-server-${name}-${datacenter}-voter"]
 EOT
 
 
