@@ -96,15 +96,7 @@ fi
 
 ### Nomad
 # Nomad Enterprise Features
-
-if [ $nomad_binary == "nomad-enterprise" ]; then
-  echo "NOMAD_LICENSE=${nomad_license}" >> /etc/nomad.d/nomad.env
-  NON_VOTER="non_voting_server = ${nomad_non_voting_server}"
-else
-  NON_VOTER=""
-fi
-
-echo ${nomad_voter_config}
+echo "NOMAD_LICENSE=${nomad_license}" >> /etc/nomad.d/nomad.env
 
 # Configure Nomad and start it up
 cat <<EOT > /etc/nomad.d/nomad.hcl
