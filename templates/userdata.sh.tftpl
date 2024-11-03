@@ -109,7 +109,7 @@ datacenter = "${nomad_datacenter}"
 # Enable the server
 server {
   enabled = true
-  bootstrap_expect = ${nomad_server_count}
+  ${nomad_bootstrap_expect}
   ${nomad_voter_config}
 }
 

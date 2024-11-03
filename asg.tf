@@ -53,6 +53,7 @@ resource "aws_launch_template" "nomad_server" {
     nomad_ca_file           = var.ca_file,
     nomad_non_voting_server = var.nomad_non_voting_server,
     nomad_voter_config      = local.nomad_voter_config,
+    nomad_bootstrap_expect  = local.nomad_bootstrap_expect,
     consul_enabled          = var.consul_enabled,
     consul_ca_file          = var.consul_ca_file,
     consul_binary           = var.consul_binary,
