@@ -36,7 +36,28 @@ variable "nomad_binary" {
   default     = "nomad"
 }
 
+variable "nomad_server_count" {
+  description = "The number of nomad servers, should be 1,3 or 5"
+  default     = 1
+}
 
+variable "nomad_encryption_key" {
+  description = "Nomad Encryption Key, default only for dev environments"
+  default     = "P4+PEZg4jDcWkSgHZ/i3xMuHaMmU8rx2owA4ffl2K8w="
+}
+
+variable "nomad_bootstrap_token" {
+  description = "Do not use defaults in production"
+  default     = "30d8650c-d7fa-45d7-ab6e-7a8bf7c74a6b"
+}
+
+variable "nomad_server_count_min" {
+  default = 1
+}
+
+variable "nomad_server_count_max" {
+  default = 3
+}
 variable "consul_enabled" {
   description = "value"
   default     = true
@@ -69,21 +90,6 @@ variable "consul_encryption_key" {
 
 variable "datacenter" {
   default = "dc1"
-}
-
-variable "nomad_server_count" {
-  description = "The number of nomad servers, should be 1,3 or 5"
-  default     = 1
-}
-
-variable "nomad_encryption_key" {
-  description = "Nomad Encryption Key, default only for dev environments"
-  default     = "P4+PEZg4jDcWkSgHZ/i3xMuHaMmU8rx2owA4ffl2K8w="
-}
-
-variable "nomad_bootstrap_token" {
-  description = "Do not use defaults in production"
-  default     = "30d8650c-d7fa-45d7-ab6e-7a8bf7c74a6b"
 }
 
 variable "ca_file" {}

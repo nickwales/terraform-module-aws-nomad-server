@@ -1,7 +1,7 @@
 resource "aws_autoscaling_group" "nomad_server" {
   name                      = "nomad-server-${var.name}-${var.datacenter}-${local.voter}"
-  max_size                  = 3
-  min_size                  = 1
+  min_size                  = var.nomad_server_count_min
+  max_size                  = var.nomad_server_count_max
   health_check_grace_period = 300
   health_check_type         = "EC2"
   desired_capacity          = var.nomad_server_count
